@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Career Labs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero hidden-scroll">
+        <div class="content">
+            <img src="logo.png" alt="The Career Labs Logo" class="hero-logo parallax-element" data-speed="0.1">
+            <h1 class="parallax-element" data-speed="0.2">Navigating career pivots and industry realities.</h1>
+            <div class="cta-container parallax-element" data-speed="0.3">
+                <a href="https://open.spotify.com/show/6IlirVugsrullGBylciL2o?si=8064e988a2f944f2" target="_blank" class="cta-button">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                    </svg>
+                    Listen on Spotify
+                    <div class="soundwave"><span></span><span></span><span></span><span></span></div>
+                </a>
+                <a href="https://www.youtube.com/@TheCareerLabsReal" target="_blank" class="cta-button">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Watch on YouTube
+                    <div class="soundwave"><span></span><span></span><span></span><span></span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Episode Vault Section -->
+    <section id="episode-vault" class="episode-vault hidden-scroll">
+        <h2 class="parallax-element section-header" data-speed="0.15">The Episode Vault</h2>
+        
+        <div class="filter-ui">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="tech">Tech</button>
+            <button class="filter-btn" data-filter="finance">Finance</button>
+            <button class="filter-btn" data-filter="specialized">Specialized</button>
+        </div>
+
+        <div class="vault-grid">
+            <!-- Tech -->
+            <div class="vault-card" data-category="tech">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/HCsTgNiFMhY" title="Google" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="vault-card" data-category="tech">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZT5I3MOXpDE" title="Stripe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="vault-card" data-category="tech">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yf8LZHr4Y7A" title="Cybersec" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <!-- Finance -->
+            <div class="vault-card" data-category="finance">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3qmk-wE-Dg8" title="Wealth Mgt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="vault-card" data-category="finance">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/rvBu_4TXZwk" title="Financial Advisory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="vault-card" data-category="finance">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ME38odBmYro" title="Impact Investing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Specialized -->
+            <div class="vault-card" data-category="specialized">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZndSxeQcePY" title="Pilot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="vault-card" data-category="specialized">
+                <div class="video-thumbnail">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dGEMlHIRoiE" title="Specialized" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Lab: Pivot Analyzer -->
+    <section id="the-lab" class="the-lab hidden-scroll">
+        <h2 class="parallax-element section-header" data-speed="0.15">The Lab: Pivot Analyzer</h2>
+        <div class="lab-container">
+            <form id="pivot-form" class="pivot-form">
+                <div class="form-group">
+                    <label for="current-status">Current Status</label>
+                    <div class="select-wrapper">
+                        <select id="current-status" required>
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="student">Student</option>
+                            <option value="nsf">NSF</option>
+                            <option value="corporate">Corporate Professional</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="target-industry">Target Industry</label>
+                    <div class="select-wrapper">
+                        <select id="target-industry" required>
+                            <option value="" disabled selected>Select Industry</option>
+                            <option value="tech">Big Tech</option>
+                            <option value="finance">Finance</option>
+                            <option value="aviation">Aviation/Specialized</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="cta-button submit-btn">
+                    Run Analysis
+                    <div class="soundwave"><span></span><span></span><span></span><span></span></div>
+                </button>
+            </form>
+            <div id="result-container" class="result-container hidden fade-out">
+                <div class="result-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Host Section -->
+    <section id="the-host" class="the-host hidden-scroll">
+        <h2 class="parallax-element section-header" data-speed="0.15">The Host</h2>
+        <div class="split-layout">
+            <div class="host-copy">
+                <h3>Aidan Koh | Co-Founder & Lead Interviewer</h3>
+                <p>Aidan drives the inquiry and guest curation for The Career Labs, architecting the conversations that dissect successful career pivots and industry realities. As a Merit Scholar studying Data Science and Economics at the National University of Singapore, his approach to career navigation is highly analytical.</p>
+                <p>Aidan specializes in cutting through noise to find actionable variables—a skill honed through four years of breaking down complex syllabi as an A-Level Economics tutor and tracking tech and semiconductor market cycles as an active proprietary trader.</p>
+                <p>That rigorous, data-first methodology is backed by the relentless discipline of 15 years as a national-level varsity swimmer. Aidan applies this same competitive drive to extract high-signal, unfiltered advice from industry leaders, building a definitive playbook for students, NSFs, and transitioning professionals.</p>
+            </div>
+            <div class="neon-divider"></div>
+            <div class="host-image-container">
+                <img src="host.png" alt="Aidan Koh Portrait" class="host-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- The Playbook (Lead Capture) -->
+    <section id="playbook" class="playbook hidden-scroll">
+        <div class="playbook-content">
+            <h2 class="section-header">The Lab Playbook</h2>
+            <p>Get our data-driven frameworks for career pivots and interview prep delivered straight to your inbox.</p>
+            <form class="lead-form" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Email Address" required class="email-input">
+                <button type="submit" class="cta-button solid-btn">Download Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://open.spotify.com/show/6IlirVugsrullGBylciL2o?si=8064e988a2f944f2" target="_blank">Spotify</a>
+            <a href="https://www.youtube.com/@TheCareerLabsReal" target="_blank">YouTube</a>
+            <a href="#">Pitch a Guest</a>
+            <a href="#">Ask The Lab (Submit a Question)</a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 The Career Labs. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
