@@ -25,6 +25,16 @@ body {
     padding: 0;
     overflow-x: hidden;
     line-height: 1.6;
+}
+
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -64,6 +74,7 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
 }
 
 /* Parallax */
@@ -331,6 +342,8 @@ section {
 
 /* Footer */
 .footer {
+    position: relative;
+    z-index: 1;
     border-top: 1px solid var(--border-subtle);
     padding: 4rem 2rem;
     text-align: center;
@@ -592,7 +605,8 @@ select:focus {
 
 /* The Playbook */
 .playbook {
-    background-color: #0A0A0A;
+    background-color: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(5px);
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
     padding: 6rem 2rem;
