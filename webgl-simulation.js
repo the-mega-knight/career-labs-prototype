@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const positions = new Float32Array(particleCount * 3);
     const targetPositions = new Float32Array(particleCount * 3);
     const phases = new Float32Array(particleCount);
+    const colors = new Float32Array(particleCount * 3);
+    const targetColors = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount; i++) {
         const x = (Math.random() - 0.5) * 300;
@@ -33,23 +35,42 @@ document.addEventListener('DOMContentLoaded', () => {
         targetPositions[i * 3 + 2] = z;
 
         phases[i] = Math.random() * Math.PI * 2;
+        
+        colors[i * 3] = 0.5;
+        colors[i * 3 + 1] = 0.5;
+        colors[i * 3 + 2] = 0.5;
+        
+        targetColors[i * 3] = 0.5;
+        targetColors[i * 3 + 1] = 0.5;
+        targetColors[i * 3 + 2] = 0.5;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-        color: 0xE0E0E0,
-        size: 0.8,
+        size: 3.5,
         transparent: true,
-        opacity: 0.6,
-        blending: THREE.AdditiveBlending
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending,
+        vertexColors: true
     });
 
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
     // 3. Formations
+    // Helper to reset color
+    function resetColors() {
+        for (let i = 0; i < particleCount; i++) {
+            targetColors[i * 3] = 0.5;
+            targetColors[i * 3 + 1] = 0.5;
+            targetColors[i * 3 + 2] = 0.5;
+        }
+    }
+
     function setTargetScatter() {
+        resetColors();
         for (let i = 0; i < particleCount; i++) {
             targetPositions[i * 3] = (Math.random() - 0.5) * 300;
             targetPositions[i * 3 + 1] = (Math.random() - 0.5) * 300;
@@ -65,25 +86,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetPositions[index] = -60;
                 targetPositions[index + 1] = (Math.random() * 100) - 50;
                 targetPositions[index + 2] = (Math.random() - 0.5) * 5;
+                targetColors[index] = 0.3; targetColors[index+1] = 0.3; targetColors[index+2] = 0.3;
             } else if (ratio < 0.4) { // X-axis
                 targetPositions[index] = (Math.random() * 120) - 60;
                 targetPositions[index + 1] = -50;
                 targetPositions[index + 2] = (Math.random() - 0.5) * 5;
-            } else if (ratio < 0.7) { // Supply
+                targetColors[index] = 0.3; targetColors[index+1] = 0.3; targetColors[index+2] = 0.3;
+            } else if (ratio < 0.7) { // Supply (brighter)
                 const t = Math.random();
                 targetPositions[index] = -40 + t * 80;
                 targetPositions[index + 1] = -30 + t * 80;
                 targetPositions[index + 2] = (Math.random() - 0.5) * 10;
-            } else { // Demand
+                targetColors[index] = 1.0; targetColors[index+1] = 1.0; targetColors[index+2] = 1.0;
+            } else { // Demand (darker grey)
                 const t = Math.random();
                 targetPositions[index] = -40 + t * 80;
                 targetPositions[index + 1] = 50 - t * 80;
                 targetPositions[index + 2] = (Math.random() - 0.5) * 10;
+                targetColors[index] = 0.5; targetColors[index+1] = 0.5; targetColors[index+2] = 0.5;
             }
         }
     }
 
     function setTargetPhillipsCurve() {
+        resetColors();
         for (let i = 0; i < particleCount; i++) {
             const index = i * 3;
             const ratio = i / particleCount;
@@ -109,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setTargetText() {
+        resetColors();
         // C + I + G + = Y
         const textLines = [
             [-50, 10, -60, 10], [-60, 10, -60, -10], [-60, -10, -50, -10], // C
@@ -188,6 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const elapsedTime = clock.getElapsedTime();
         const posAttr = geometry.attributes.position;
         const positionsArray = posAttr.array;
+        const colAttr = geometry.attributes.color;
+        const colorsArray = colAttr.array;
         
         for (let i = 0; i < particleCount; i++) {
             const index = i * 3;
@@ -195,12 +224,17 @@ document.addEventListener('DOMContentLoaded', () => {
             positionsArray[index+1] += (targetPositions[index+1] - positionsArray[index+1]) * 0.03;
             positionsArray[index+2] += (targetPositions[index+2] - positionsArray[index+2]) * 0.03;
 
+            colorsArray[index] += (targetColors[index] - colorsArray[index]) * 0.05;
+            colorsArray[index+1] += (targetColors[index+1] - colorsArray[index+1]) * 0.05;
+            colorsArray[index+2] += (targetColors[index+2] - colorsArray[index+2]) * 0.05;
+
             const phase = phases[i];
             positionsArray[index] += Math.sin(elapsedTime * 0.5 + phase) * 0.05;
             positionsArray[index+1] += Math.cos(elapsedTime * 0.4 + phase) * 0.05;
         }
 
         posAttr.needsUpdate = true;
+        colAttr.needsUpdate = true;
 
         points.rotation.x += (targetRotationX - points.rotation.x) * 0.05;
         points.rotation.y += (targetRotationY - points.rotation.y) * 0.05;
